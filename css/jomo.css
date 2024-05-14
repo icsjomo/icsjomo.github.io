@@ -1,0 +1,12 @@
+.sidebar {
+    background-color: #9fd5cc; /* 設置導覽列的背景顏色 */
+    color: #333; /* 設置文本顏色 */
+}
+
+.sidebar .nav-link {
+    color: #333; /* 設置導覽連結的文本顏色 */
+}
+
+.sidebar .nav-link:hover {
+    color: #555; /* 設置導覽連結的鼠標懸停時的文本顏色 */
+}
