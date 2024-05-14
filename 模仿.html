@@ -120,88 +120,74 @@
       </div>
       <!-- Navbar End -->
 
-      <style>
-        .slider-container {
-            width: 80%;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
+      <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Video Player</title>
+        <link rel="stylesheet" href="styles.css">
+        <style>
+        .container {
+            text-align: center;
+            margin-top: 50px;
         }
 
-        .slider {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        #video {
+            width: 80%; /* 調整影片寬度 */
+            max-width: 800px; /* 最大寬度 */
+            height: auto; /* 使高度自動調整以保持影片比例 */
+            margin: 0 auto; /* 將影片置中 */
         }
 
-        .slide {
-            min-width: 100%;
-            overflow: hidden;
-        }
-
-        img {
-            width: 100%;
-            height: auto;
-        }
-
-        .prev, .next {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
+        .controls button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
             cursor: pointer;
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            border: none;
+        }
+
+        .controls button:focus {
             outline: none;
-        }
-
-        .prev {
-            left: 0;
-        }
-
-        .next {
-            right: 0;
         }
     </style>
 </head>
 <body>
-    <div class="slider-container">
-        <div class="slider">
-            <div class="slide"><img src="image1.jpg" alt="Image 1"></div>
-            <div class="slide"><img src="image2.jpg" alt="Image 2"></div>
-            <div class="slide"><img src="image3.jpg" alt="Image 3"></div>
-            <!-- Add more slides here -->
+    <div class="container">
+        <h1>Video Player</h1>
+        <select id="videoSelect" onchange="changeVideo()">
+            <option value="video1.mp4">Video 1</option>
+            <option value="video2.mp4">Video 2</option>
+            <option value="video3.mp4">Video 3</option>
+        </select>
+        <video id="video" controls>
+            <source id="videoSource" src="video1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="controls">
+            <button id="playBtn" onclick="playVideo()">Play</button>
+            <button id="pauseBtn" onclick="pauseVideo()">Pause</button>
         </div>
-        <button class="prev" onclick="prevSlide()">&#10094;</button>
-        <button class="next" onclick="nextSlide()">&#10095;</button>
     </div>
-
     <script>
-        var slideIndex = 0;
-        showSlides(slideIndex);
-
-        function prevSlide() {
-            showSlides(slideIndex -= 1);
+        function changeVideo() {
+            var selectBox = document.getElementById("videoSelect");
+            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
+            document.getElementById("videoSource").src = selectedValue;
+            var videoPlayer = document.getElementById("video");
+            videoPlayer.load(); // 重新載入影片
         }
 
-        function nextSlide() {
-            showSlides(slideIndex += 1);
+        function playVideo() {
+            var videoPlayer = document.getElementById("video");
+            videoPlayer.play();
         }
 
-        function showSlides(index) {
-            var slides = document.getElementsByClassName("slide");
-            if (index >= slides.length) {
-                slideIndex = 0;
-            }
-            if (index < 0) {
-                slideIndex = slides.length - 1;
-            }
-            for (var i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            slides[slideIndex].style.display = "block";
+        function pauseVideo() {
+            var videoPlayer = document.getElementById("video");
+            videoPlayer.pause();
         }
     </script>
+    </body>
+
 
 
 
