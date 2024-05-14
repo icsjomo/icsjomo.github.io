@@ -54,15 +54,13 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  margin: 0;
   font-family: "Nunito", sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
+  font-size: 16px;
   line-height: 1.5;
   color: #666666;
-  text-align: left;
   background-color: #fff;
 }
+
 
 [tabindex="-1"]:focus:not(:focus-visible) {
   outline: 0 !important;
@@ -6356,7 +6354,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-  background-color: #f3eccf !important;
+  background-color: #fff !important;
 }
 
 a.bg-primary:hover, a.bg-primary:focus,
@@ -6416,7 +6414,7 @@ button.bg-danger:focus {
 }
 
 .bg-light {
-  background-color: #f8f9fa !important;
+  background-color: #f3eccf!important;
 }
 
 a.bg-light:hover, a.bg-light:focus,
