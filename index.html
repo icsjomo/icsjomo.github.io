@@ -139,7 +139,7 @@
 
         </div>
         <div class="col-lg-6 text-center text-lg-right">
-          <img class="img/JOMO_主視覺.png" src="img/JOMO_主視覺.png" alt="" />
+          <img class="img/JOMO_主視覺.jpg" src="img/JOMO_主視覺.jpg" alt="" />
         </div>
       </div>
     </div>
@@ -296,7 +296,7 @@
             class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
             style="font-size: 40px; line-height: 40px"
           >
-          <i class="img/JOMO_主視覺.png"></i>  <img class="img-fluid mt-5" src="img/JOMO_主視覺.png" alt="" />
+          <i class="img/JOMO_主視覺.jpg"></i>  <img class="img-fluid mt-5" src="img/JOMO_主視覺.jpg" alt="" />
 
 
           <div class="d-flex justify-content-start mt-4">
@@ -370,33 +370,39 @@
               >
             </div>
           </div>
-          <div class="col-lg-3 col-md-6 mb-5">
-            <h3 class="text-primary mb-4">Newsletter</h3>
-            <form action="">
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control border-0 py-4"
-                  placeholder="Your Name"
-                  required="required"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="email"
-                  class="form-control border-0 py-4"
-                  placeholder="Your Email"
-                  required="required"
-                />
-              </div>
-              <div class="form-group">
-                <textarea class="form-control border-0 py-4" rows="4" placeholder="請留下您的訊息" required></textarea>
-              </div>
-              <div>
-                <button class="btn btn-primary btn-block border-0 py-3" type="submit">送出留言</button>
-              </div>
-            </form>
-          </div>
+          <body>
+
+            <div class="col-lg-3 col-md-6 mb-5">
+              <h3 class="text-primary mb-4">Newsletter</h3>
+              <form action="/submit-form" method="post">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="name"
+                    class="form-control border-0 py-4"
+                    placeholder="Your Name"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    name="email"
+                    class="form-control border-0 py-4"
+                    placeholder="Your Email"
+                    required="required"
+                  />
+                </div>
+                <div class="form-group">
+                  <textarea name="message" class="form-control border-0 py-4" rows="4" placeholder="請留下您的訊息" required></textarea>
+                </div>
+                <div>
+                  <button class="btn btn-primary btn-block border-0 py-3" type="submit">送出留言</button>
+                </div>
+              </form>
+            </div>
+            
+            </body>
         </div>
         <div
           class="container-fluid pt-5"
