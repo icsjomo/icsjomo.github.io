@@ -119,72 +119,137 @@
         </nav>
       </div>
       <!-- Navbar End -->
+     
       <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Video Player</title>
         <link rel="stylesheet" href="styles.css">
         <style>
-        .container {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        #video {
-            width: 80%; /* 調整影片寬度 */
-            max-width: 800px; /* 最大寬度 */
-            height: auto; /* 使高度自動調整以保持影片比例 */
-            margin: 0 auto; /* 將影片置中 */
-        }
-
-        .controls button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
-        .controls button:focus {
-            outline: none;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Video Player</h1>
-        <select id="videoSelect" onchange="changeVideo()">
-            <option value="video1.mp4">Video 1</option>
-            <option value="video2.mp4">Video 2</option>
-            <option value="video3.mp4">Video 3</option>
-        </select>
-        <video id="video" controls>
-            <source id="videoSource" src="video1.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-        </video>
-        <div class="controls">
-            <button id="playBtn" onclick="playVideo()">Play</button>
-            <button id="pauseBtn" onclick="pauseVideo()">Pause</button>
+            .container {
+                text-align: center;
+                margin-top: 50px;
+            }
+    
+            #video {
+                width: 80%;
+                max-width: 800px;
+                height: auto;
+                margin: 0 auto;
+            }
+    
+            .controls {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+                margin: 20px 0;
+            }
+    
+            .controls button {
+                padding: 10px 20px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+    
+            .controls button:focus {
+                outline: none;
+            }
+    
+            .progress {
+                width: 80%;
+                max-width: 800px;
+                height: 10px;
+                background-color: #ccc;
+                margin: 20px auto;
+                cursor: pointer;
+            }
+    
+            .progress-filled {
+                width: 0%;
+                height: 100%;
+                background-color: #2196F3;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Video Player</h1>
+            <select id="videoSelect" onchange="changeVideo()">
+                <option value="video1.mp4">Video 1</option>
+                <option value="video2.mp4">Video 2</option>
+                <option value="video3.mp4">Video 3</option>
+                <option value="video4.mp4">Video 4</option>
+                <option value="video5.mp4">Video 5</option>
+            </select>
+            <video id="video" controls>
+                <source id="videoSource" src="video1.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+            </video>
+            <div class="progress" onclick="seek(event)">
+                <div class="progress-filled"></div>
+            </div>
+            <div class="controls">
+                <button id="prevBtn" onclick="prevVideo()">上一個</button>
+                <button id="playBtn" onclick="playVideo()">播放</button>
+                <button id="pauseBtn" onclick="pauseVideo()">暫停</button>
+                <button id="nextBtn" onclick="nextVideo()">下一個</button>
+            </div>
         </div>
-    </div>
-    <script>
-        function changeVideo() {
-            var selectBox = document.getElementById("videoSelect");
-            var selectedValue = selectBox.options[selectBox.selectedIndex].value;
-            document.getElementById("videoSource").src = selectedValue;
-            var videoPlayer = document.getElementById("video");
-            videoPlayer.load(); // 重新載入影片
-        }
-
-        function playVideo() {
-            var videoPlayer = document.getElementById("video");
-            videoPlayer.play();
-        }
-
-        function pauseVideo() {
-            var videoPlayer = document.getElementById("video");
-            videoPlayer.pause();
-        }
-    </script>
+        <script>
+            const video = document.getElementById('video');
+            const progress = document.querySelector('.progress');
+            const progressFilled = document.querySelector('.progress-filled');
+            const videoSelect = document.getElementById('videoSelect');
+            let videoIndex = 0;
+    
+            const videos = ["video1.mp4", "video2.mp4", "video3.mp4", "video4.mp4", "video5.mp4"];
+    
+            video.addEventListener('timeupdate', updateProgress);
+            video.addEventListener('click', togglePlayPause);
+            progress.addEventListener('click', seek);
+    
+            function changeVideo() {
+                videoIndex = videoSelect.selectedIndex;
+                document.getElementById("videoSource").src = videos[videoIndex];
+                video.load();
+                playVideo();
+            }
+    
+            function playVideo() {
+                video.play();
+            }
+    
+            function pauseVideo() {
+                video.pause();
+            }
+    
+            function prevVideo() {
+                videoIndex = (videoIndex - 1 + videos.length) % videos.length;
+                videoSelect.selectedIndex = videoIndex;
+                changeVideo();
+            }
+    
+            function nextVideo() {
+                videoIndex = (videoIndex + 1) % videos.length;
+                videoSelect.selectedIndex = videoIndex;
+                changeVideo();
+            }
+    
+            function togglePlayPause() {
+                video.paused ? playVideo() : pauseVideo();
+            }
+    
+            function updateProgress() {
+                const percent = (video.currentTime / video.duration) * 100;
+                progressFilled.style.width = `${percent}%`;
+            }
+    
+            function seek(event) {
+                const progressTime = (event.offsetX / progress.offsetWidth) * video.duration;
+                video.currentTime = progressTime;
+            }
+        </script>
     </body>
 
 
@@ -196,154 +261,81 @@
 
 
 
-
-       <!-- Footer Start -->
-    <div
-    class="container-fluid bg-secondary text-white mt-5 py-5 px-sm-3 px-md-5"
-  >
-    <div class="row pt-5">
-      <div class="col-lg-3 col-md-6 mb-5">
-        <a
-          href=""
-          class="navbar-brand font-weight-bold text-primary m-0 mb-4 p-0"
-          style="font-size: 40px; line-height: 40px"
-        >
-        <i class="img/頁尾主視覺.png"></i>  <img class="img-fluid mt-5" src="img/頁尾主視覺.png" alt="" />
-
-
-        <div class="d-flex justify-content-start mt-4">
-          <a
-            class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-            style="width: 38px; height: 38px"
-            href="#"
-            ><i class="fab fa-twitter"></i
-          ></a>
-          <a
-            class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-            style="width: 38px; height: 38px"
-            href="#"
-            ><i class="fab fa-facebook-f"></i
-          ></a>
-          <a
-            class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-            style="width: 38px; height: 38px"
-            href="#"
-            ><i class="fab fa-linkedin-in"></i
-          ></a>
-          <a
-            class="btn btn-outline-primary rounded-circle text-center mr-2 px-0"
-            style="width: 38px; height: 38px"
-            href="#"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-5">
-        <h3 class="text-primary mb-4">聯絡我們</h3>
-        <div class="d-flex">
-          <h4 class="fa fa-map-marker-alt text-primary"></h4>
-          <div class="pl-3">
-            <h5 class="text-white">地址</h5>
-            <p>台北市木柵路一段17號</p>
-          </div>
-        </div>
-        <div class="d-flex">
-          <h4 class="fa fa-envelope text-primary"></h4>
-          <div class="pl-3">
-            <h5 class="text-white">信箱</h5>
-            <p>jomo@gmail.com</p>
-          </div>
-        </div>
-        <div class="d-flex">
-          <h4 class="fa fa-phone-alt text-primary"></h4>
-          <div class="pl-3">
-            <h5 class="text-white">電話</h5>
-            <p>02-2236-8225</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-lg-3 col-md-6 mb-5">
-        <h3 class="text-primary mb-4">連結</h3>
-        <div class="d-flex flex-column justify-content-start">
-            <a class="text-white mb-2" href="#"
-            ><i class="fa fa-angle-right mr-2"></i>首頁</a
-            >
-            <a class="text-white mb-2" href="專題簡介.html" >
-              <i class="fa fa-angle-right mr-2"></i>關於我們</a
-              >
-              <a class="text-white mb-2" href="詐騙.html"
-              ><i class="fa fa-angle-right mr-2"></i>兒童網路素養</a
-              >
-              <a class="text-white mb-2" href="兒童常用平台介紹.html"
-              ><i class="fa fa-angle-right mr-2"></i>家長專區</a
-              >
-              <a class="text-white mb-2" href="兒少新聞議題.html"
-              ><i class="fa fa-angle-right mr-2"></i>消息中心</a
-              >
-          </div>
-        </div>
-        <div class="col-lg-3 col-md-6 mb-5">
-          <h3 class="text-primary mb-4">Newsletter</h3>
-          <form action="">
-            <div class="form-group">
-              <input
-                type="text"
-                class="form-control border-0 py-4"
-                placeholder="Your Name"
-                required="required"
-              />
-            </div>
-            <div class="form-group">
-              <input
-                type="email"
-                class="form-control border-0 py-4"
-                placeholder="Your Email"
-                required="required"
-              />
-            </div>
-            <div class="form-group">
-              <textarea class="form-control border-0 py-4" rows="4" placeholder="請留下您的訊息" required></textarea>
-            </div>
-            <div>
-              <button class="btn btn-primary btn-block border-0 py-3" type="submit">送出留言</button>
-            </div>
-          </form>
-        </div>
-      </div>
-      <div
-        class="container-fluid pt-5"
-        style="border-top: 1px solid rgba(23, 162, 184, 0.2) ;"
-      >
-        <p class="m-0 text-center text-white">
-          &copy;
-          <a class="text-primary font-weight-bold" href="#">Your Site Name</a>.
-          All Rights Reserved.
-          <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-          Designed by
-          <a class="text-primary font-weight-bold" href="https://htmlcodex.com"
-            >HTML Codex</a
-          >
-          <br />Distributed By:
-          <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-        </p>
+ <!-- Footer Start -->
+<footer class="container-fluid bg-secondary text-white mt-5 py-4 px-sm-3 px-md-5">
+  <div class="row pt-4 justify-content-center">
+    <div class="col-lg-3 col-md-6 mb-4">
+      <a href="#" class="navbar-brand font-weight-bold text-primary m-0 mb-3 p-0" style="font-size: 30px; line-height: 30px;">
+        <img class="img-fluid mt-4" src="img/頁尾主視覺.png" alt="JOMO Logo" />
+      </a>
+      <div class="d-flex justify-content-start mt-3">
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 30px; height: 30px;" href="#"><i class="fab fa-twitter"></i></a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 30px; height: 30px;" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 30px; height: 30px;" href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a class="btn btn-outline-primary rounded-circle text-center mr-2 px-0" style="width: 30px; height: 30px;" href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
-    <!-- Footer End -->
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-primary p-3 back-to-top"
-      ><i class="fa fa-angle-double-up"></i
-    ></a>
-    <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-    <script src="lib/isotope/isotope.pkgd.min.js"></script>
-    <script src="lib/lightbox/js/lightbox.min.js"></script>
-    <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
-    <!-- Template Javascript -->
-    <script src="js/main.js"></script>
-  </body>
+    <div class="col-lg-3 col-md-6 mb-4 offset-lg-1">
+      <h4 class="text-primary mb-3">聯絡我們</h4>
+      <div class="d-flex mb-2">
+        <h5 class="fa fa-map-marker-alt text-primary mt-1 mr-2"></h5>
+        <div>
+          <h6 class="text-white mb-1">地址</h6>
+          <p>台北市木柵路一段17號</p>
+        </div>
+      </div>
+      <div class="d-flex mb-2">
+        <h5 class="fa fa-envelope text-primary mt-1 mr-2"></h5>
+        <div>
+          <h6 class="text-white mb-1">信箱</h6>
+          <p>jomo@gmail.com</p>
+        </div>
+      </div>
+      <div class="d-flex">
+        <h5 class="fa fa-phone-alt text-primary mt-1 mr-2"></h5>
+        <div>
+          <h6 class="text-white mb-1">電話</h6>
+          <p>02-2236-8225</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 mb-4 offset-lg-1">
+      <h4 class="text-primary mb-3">連結</h4>
+      <div class="d-flex flex-column justify-content-start">
+        <a class="text-white mb-2" href="index.html"><i class="fa fa-angle-right mr-1"></i>首頁</a>
+        <a class="text-white mb-2" href="專題簡介.html"><i class="fa fa-angle-right mr-1"></i>關於我們</a>
+        <a class="text-white mb-2" href="詐騙.html"><i class="fa fa-angle-right mr-1"></i>兒童網路素養</a>
+        <a class="text-white mb-2" href="兒童常用平台介紹.html"><i class="fa fa-angle-right mr-1"></i>家長專區</a>
+        <a class="text-white mb-2" href="兒少新聞議題.html"><i class="fa fa-angle-right mr-1"></i>消息中心</a>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid pt-4" style="border-top: 1px solid rgba(23, 162, 184, 0.2);">
+    <p class="m-0 text-center text-white" style="font-size: 12px;">
+      &copy; <a class="text-primary font-weight-bold" href="#">JOMO</a> All Rights Reserved.
+      Designed by <a class="text-primary font-weight-bold" href="https://htmlcodex.com">HTML Codex</a>
+      <br />Distributed By: <a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+    </p>
+  </div>
+</footer>
+<!-- Footer End -->
+
+
+<!-- Back to Top -->
+<a href="#" class="btn btn-primary p-2 back-to-top"
+  ><i class="fa fa-angle-double-up"></i
+></a>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<script src="lib/easing/easing.min.js"></script>
+<script src="lib/owlcarousel/owl.carousel.min.js"></script>
+<script src="lib/isotope/isotope.pkgd.min.js"></script>
+<script src="lib/lightbox/js/lightbox.min.js"></script>
+<!-- Contact Javascript File -->
+<script src="mail/jqBootstrapValidation.min.js"></script>
+<script src="mail/contact.js"></script>
+<!-- Template Javascript -->
+<script src="js/main.js"></script>
+</body>
 </html>

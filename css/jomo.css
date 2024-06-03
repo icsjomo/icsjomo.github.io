@@ -1,1 +1,157 @@
+/* style.css */
+body, html {
+    font-family: 'Nunito', sans-serif;
+    color: #c03079(--text-color);
+    background-color: var(--background-color);
+}
 
+a {
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--link-hover-color);
+}
+
+.navbar, .footer {
+    background-color: var(--secondary-color-light);
+}
+
+.navbar-brand span, .footer .text-primary {
+    color: var(--primary-color);
+}
+
+.footer {
+    padding: 2rem;
+    color: var(--text-color-light);
+}
+
+.footer a {
+    color: var(--text-color-light);
+}
+
+.footer a:hover {
+    color: var(--primary-color);
+}
+
+.btn-outline-primary {
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+/* Custom styling for improved aesthetics */
+.card-body {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+
+.accordion-item {
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.accordion-item button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    width: 100%;
+    text-align: left;
+    padding: 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-item button:hover {
+    background-color: var(--link-hover-color);
+}
+
+.accordion-item .collapse {
+    padding: 1rem;
+    background-color: var(--background-color);
+}
+
+.min-vh-100 {
+    min-height: 100vh;
+}
+
+.sidebar {
+    background-color: var(--secondary-color-light);
+    padding: 1rem;
+    border-radius: 8px;
+}
+
+.sidebar .nav-link {
+    color: var(--text-color-light);
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+
+.sidebar .nav-link:hover {
+    background-color: var(--primary-color);
+}
+.card {
+    background-color: #f3eccf;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 1rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.small-card {
+    width: 100%; /* 默认占满父容器宽度 */
+    max-width: 200px; /* 设置最大宽度以缩小卡片 */
+    margin: auto; /* 使卡片居中对齐 */
+}
+
+.card .icon-large {
+    font-size: 5rem; /* 调整这里来设置图标大小 */
+    margin-bottom: 0.8rem;
+    color: var(--primary-color); /* 可以设置图标颜色 */
+}
+
+.small-card-body {
+    padding: 0.3rem; /* 缩小卡片内容区域的边距 */
+}
+.carousel-item img {
+    border-radius: 8px;
+    object-fit: cover;
+    height: 300px; /* Adjust height as needed */
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color); /* Customize carousel control icons */
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: var(--primary-color);
+}
+
+.carousel-item {
+    text-align: center;
+}
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 控制按钮之间的间距 */
+}
