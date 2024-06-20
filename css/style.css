@@ -54,7 +54,7 @@ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
 }
 
 body {
-  font-family: "Nunito", sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 16px;
   line-height: 1.5;
   color: #666666;
@@ -9827,13 +9827,7 @@ a.text-dark:hover, a.text-dark:focus {
   opacity: 1;
 }
 
-.team .team-social {
-  top: 0;
-  background: rgba(23, 162, 184, 0.8);
-  opacity: 0;
-  z-index: 1;
-  transition: .5s;
-}
+
 
 .team:hover .team-social {
   opacity: 1;

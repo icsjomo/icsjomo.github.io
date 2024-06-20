@@ -61,8 +61,8 @@ a:hover {
 }
 
 .accordion-item button {
-    background-color: var(--primary-color);
-    color: white;
+    background-color: #f3eccf;
+    color: #fff;;
     border: none;
     width: 100%;
     text-align: left;
@@ -154,4 +154,47 @@ a:hover {
     justify-content: center;
     align-items: center;
     gap: 10px; /* 控制按钮之间的间距 */
+}
+
+.lxgw-wenkai-mono-tc-regular {
+    font-family: "LXGW WenKai Mono TC", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+ 
+  .container {
+      text-align: center;
+      margin-top: 50px;
+  }
+
+  .icon-circle {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background-color: #f8f9fa;
+      border: 5px solid #007bff; /* 藍色邊框 */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .icon-large {
+      font-size: 100px;
+      color: #6c757d;
+  }
+
+  .card-title-container {
+      margin-top: 20px;
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff; /* 背景顏色 */
+      color: #fff; /* 字體顏色 */
+      border-radius: 15px; /* 圓角矩形 */
+      font-size: 20px;
+      font-weight: bold;
+  }
+.bb{
+    color: #007bff;
 }
