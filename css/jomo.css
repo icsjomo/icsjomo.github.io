@@ -168,8 +168,8 @@ a:hover {
   }
 
   .icon-circle {
-      width: 200px;
-      height: 200px;
+      width: 150px;
+      height: 150px;
       border-radius: 50%;
       background-color: #f8f9fa;
       border: 5px solid #007bff; /* 藍色邊框 */
@@ -181,7 +181,7 @@ a:hover {
   }
 
   .icon-large {
-      font-size: 100px;
+      font-size: 8cqb;
       color: #6c757d;
   }
 
