@@ -1,6 +1,6 @@
 /* style.css */
 body, html {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Fira Sans', sans-serif;
     color: #c03079(--text-color);
     background-color: var(--background-color);
 }
@@ -48,7 +48,7 @@ a:hover {
 
 /* Custom styling for improved aesthetics */
 .card-body {
-    background-color: white;
+    background-color: #ebeafa;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 1rem;
@@ -62,10 +62,10 @@ a:hover {
 
 .accordion-item button {
     background-color: #f3eccf;
-    color: #fff;;
+    color: #c03079;
     border: none;
     width: 100%;
-    text-align: left;
+    text-align: center;
     padding: 1rem;
     border-radius: 4px;
     transition: background-color 0.3s ease;
@@ -171,8 +171,8 @@ a:hover {
       width: 150px;
       height: 150px;
       border-radius: 50%;
-      background-color: #f8f9fa;
-      border: 5px solid #007bff; /* 藍色邊框 */
+      background-color: #f3eccf;
+      border: 5px solid #f3eccf; /* 藍色邊框 */
       display: flex;
       justify-content: center;
       align-items: center;
@@ -189,12 +189,58 @@ a:hover {
       margin-top: 20px;
       display: inline-block;
       padding: 10px 20px;
-      background-color: #007bff; /* 背景顏色 */
-      color: #fff; /* 字體顏色 */
+      background-color: #f3eccf; /* 背景顏色 */
+      color: #c03079; /* 字體顏色 */
       border-radius: 15px; /* 圓角矩形 */
       font-size: 20px;
       font-weight: bold;
   }
 .bb{
     color: #007bff;
+}
+.container {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#photo {
+    width: 80%;
+    max-width: 800px;
+    height: auto;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.controls button:focus {
+    outline: none;
+}
+
+.progress {
+    width: 80%;
+    max-width: 800px;
+    height: 10px;
+    background-color: #ccc;
+    margin: 20px auto;
+    cursor: pointer;
+}
+
+.progress-filled {
+    width: 0%;
+    height: 100%;
+    background-color: #2196F3;
 }
