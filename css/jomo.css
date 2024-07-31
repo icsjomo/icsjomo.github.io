@@ -168,8 +168,8 @@ a:hover {
   }
 
   .icon-circle {
-      width: 150px;
-      height: 150px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       background-color: #f3eccf;
       border: 5px solid #f3eccf; /* 藍色邊框 */
@@ -181,7 +181,7 @@ a:hover {
   }
 
   .icon-large {
-      font-size: 8cqb;
+      font-size: 20cqb;
       color: #6c757d;
   }
 
@@ -192,7 +192,7 @@ a:hover {
       background-color: #f3eccf; /* 背景顏色 */
       color: #c03079; /* 字體顏色 */
       border-radius: 15px; /* 圓角矩形 */
-      font-size: 20px;
+      font-size: 23px;
       font-weight: bold;
   }
 .bb{
@@ -244,3 +244,5 @@ a:hover {
     height: 100%;
     background-color: #2196F3;
 }
+
+  
