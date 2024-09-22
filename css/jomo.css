@@ -244,5 +244,32 @@ a:hover {
     height: 100%;
     background-color: #2196F3;
 }
+body {
+    font-family: 'Fira Sans', sans-serif;
+    margin: 0;
+    padding: 0;
+}
 
-  
+.container {
+    max-width: 1200px; /* 設定最大寬度 */
+    margin: 0 auto; /* 自動邊距，讓容器居中 */
+    padding: 20px; /* 內部邊距 */
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 10px 0;
+}
+
+
+.custom-breadcrumb {
+    width: 350px;
+    height: 24px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: #c03079; /* 更改顏色 */
+}
+
+
