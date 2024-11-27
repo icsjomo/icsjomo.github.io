@@ -229,6 +229,15 @@
   isPlaying = true; // 將狀態設為「播放中」
   document.getElementById('playPauseBtn').textContent = '暫停'; // 更新按鈕文字
 }
+audio.addEventListener('ended', () => {
+  isPlaying = false;
+  document.getElementById('playPauseBtn').textContent = '播放'; // 切換回「播放」文字
+});
+
+// 頁面載入時初始化
+document.addEventListener('DOMContentLoaded', () => {
+  updatePhotoAndAudio();
+});
 
   </script>
    </div>
